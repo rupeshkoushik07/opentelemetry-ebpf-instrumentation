@@ -1,6 +1,6 @@
 # Build the testclient binary
 # Docker command must be invoked from the project root directory
-FROM golang:1.25.7@sha256:cc737435e2742bd6da3b7d575623968683609a3d2e0695f9d85bee84071c08e6 AS builder
+FROM golang:1.26.2@sha256:b54cbf583d390341599d7bcbc062425c081105cc5ef6d170ced98ef9d047c716 AS builder
 
 ARG TARGETARCH
 
