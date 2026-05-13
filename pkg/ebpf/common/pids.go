@@ -150,6 +150,7 @@ func (pf *PIDsFilter) Filter(inputSpans []request.Span) []request.Span {
 				pf.checkIfExportsOTelSpanMetrics(current, span, pf.defaultOtlpGRPCPort)
 			}
 			inputSpans[i].Service = *current
+			inputSpans[i].Service.ClearCowPtr()
 			pf.normalizeTraceContext(&inputSpans[i])
 			outputSpans = append(outputSpans, inputSpans[i])
 		}

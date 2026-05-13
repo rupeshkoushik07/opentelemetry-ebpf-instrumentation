@@ -198,6 +198,12 @@ func (i *Attrs) SetCowPtr(p *atomic.Pointer[Attrs]) {
 	i.cowPtr = p
 }
 
+// ClearCowPtr zeros the internal pointer so it does not leak into span copies
+// emitted by the pipeline.
+func (i *Attrs) ClearCowPtr() {
+	i.cowPtr = nil
+}
+
 // SetHarvestedRoutes atomically swaps HarvestedRouteMatcher via copy-on-write.
 // Falls back to a direct write if cowPtr is not yet set (non-delayed harvest).
 func (i *Attrs) SetHarvestedRoutes(m route.Matcher) {
